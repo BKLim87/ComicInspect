@@ -19,9 +19,9 @@ namespace NN
             setText("haha");
 
             Matrix a = new Matrix(2, 2);
-            a.zero();
+            a.randomize();
             
-            setText((3.0*new Matrix(2,2)).toString());
+            setText((3.0*a).toString());
         }
         public void setText(String tt) {
             label1.Text = tt;
