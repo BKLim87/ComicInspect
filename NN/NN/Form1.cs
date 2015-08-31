@@ -18,13 +18,19 @@ namespace NN
 
             setText("haha");
 
-            Matrix a = new Matrix(2, 2);
-            a.randomize();
-            
-            setText((3.0*a).toString());
+            //setText((new Matrix(3, 2) * new Matrix(2, 4)).toString());
+
+            setNN();
         }
         public void setText(String tt) {
             label1.Text = tt;
+        }
+        public void setNN() {
+            NN aNN = new NN(new int[] { 3, 3, 3 });
+
+            Matrix input = new Matrix(new double[,] { { 1, 1, 1 } });
+
+            setText(aNN.calculate(input).toString());
         }
     }
 }

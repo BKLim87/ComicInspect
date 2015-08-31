@@ -40,7 +40,6 @@ namespace NN
                 }
             }
         }
-
         public void randomize()
         {
             Random r = new Random();
@@ -92,7 +91,7 @@ namespace NN
 
             for(int i=0; i<body.GetLength(0); i++)
             {
-                for(int j=0; j<body.GetLength(1), j++)
+                for (int j = 0; j < body.GetLength(1); j++)
                 {
                     tran.body[j, i] = body[i, j];
                 }
@@ -162,16 +161,16 @@ namespace NN
             int n2 = mat2.body.GetLength(0);
             int m2 = mat2.body.GetLength(1);
 
-            double[,] re = new double[n1,m1];
+            double[,] re = new double[n1,m2];
 
             for (int i = 0; i < n1; i++)
             {
-                for (int k = 0; k < m1; k++)
+                for (int k = 0; k < m2; k++)
                 {
                     re[i,k] = 0;
-                    for (int j = 0; j < m2; j++)
+                    for (int j = 0; j < m1; j++)
                     {
-                        re[i,k] += mat1.body[i,k] * mat1.body[k,j];
+                        re[i,k] += mat1.body[i,j] * mat2.body[j,k];
                     }
                 }
             }
@@ -193,27 +192,27 @@ namespace NN
 
             return text;
         }
-        public void resize(int mplus, int nplus, double num)
+        public Matrix resize(int mplus, int nplus, double num)
         {
+            Matrix newMat = new Matrix(body.GetLength(0) + mplus, body.GetLength(1) + nplus);
             if(mplus >= 0 && nplus >=0)
             {
-                double[,] newbody = new double[body.GetLength(0) + mplus, body.GetLength(1) + nplus];
-
-                for(int i=0; i<newbody.GetLength(0); i++)
+                for(int i=0; i<newMat.body.GetLength(0); i++)
                 {
-                    for(int j=0; j<newbody.GetLength(1); j++)
+                    for(int j=0; j<newMat.body.GetLength(1); j++)
                     {
                         if(i<body.GetLength(0) && j<body.GetLength(1))
                         {
-                            newbody[i, j] = body[i, j];
+                            newMat.body[i, j] = body[i, j];
                         }
                         else
                         {
-                            newbody[i, j] = num;
+                            newMat.body[i, j] = num;
                         }
                     }
                 }
             }
+            return newMat;
         }
         public double[,] todouble()
         {
@@ -236,6 +235,20 @@ namespace NN
                 }
             }
             return false;
-        } 
+        }
+        public int[] getSize()
+        {
+            return new int[2] { body.GetLength(0), body.GetLength(1) };
+        }
+        public void toSigmoid()
+        {
+            for (int i = 0; i < body.GetLength(0); i++)
+            {
+                for (int j = 0; j < body.GetLength(1); j++)
+                {
+                    body[i, j] = Calculate.sigmoid(body[i, j]);
+                }
+            }
+        }
     }
 }
