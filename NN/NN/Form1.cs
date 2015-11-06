@@ -26,11 +26,13 @@ namespace NN
             label1.Text = tt;
         }
         public void setNN() {
-            NN aNN = new NN(new int[] { 3, 3, 3 });
+            NN aNN = new NN(new int[] { 3, 3, 1 });
 
-            Matrix input = new Matrix(new double[,] { { 1, 1, 1 } });
+            Matrix input = new Matrix(new double[,] { { 0,0,0 } });
+            String result = aNN.calculate(input).toString();
+            
+            setText(result);
 
-            setText(aNN.calculate(input).toString());
         }
     }
 }

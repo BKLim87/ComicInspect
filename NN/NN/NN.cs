@@ -49,7 +49,7 @@ namespace NN
                 }
                 else
                 {
-                    temp = new Matrix(layer.ElementAt(i) + 1, layer.ElementAt(i));
+                    temp = new Matrix(layer.ElementAt(i) + 1, layer.ElementAt(i+1));
                 }
                 temp.randomize();
                 weights.Add(temp);

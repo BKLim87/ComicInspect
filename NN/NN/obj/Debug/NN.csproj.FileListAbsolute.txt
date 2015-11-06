@@ -25,3 +25,12 @@ D:\bklim_crosscert\myproject\NNInspect\ComicInspect\NN\NN\obj\Debug\NN.Propertie
 D:\bklim_crosscert\myproject\NNInspect\ComicInspect\NN\NN\obj\Debug\NN.csproj.GenerateResource.Cache
 D:\bklim_crosscert\myproject\NNInspect\ComicInspect\NN\NN\obj\Debug\NN.exe
 D:\bklim_crosscert\myproject\NNInspect\ComicInspect\NN\NN\obj\Debug\NN.pdb
+D:\bklim_crosscert\myproject\CI\ComicInspect\NN\NN\bin\Debug\NN.exe.config
+D:\bklim_crosscert\myproject\CI\ComicInspect\NN\NN\bin\Debug\NN.exe
+D:\bklim_crosscert\myproject\CI\ComicInspect\NN\NN\bin\Debug\NN.pdb
+D:\bklim_crosscert\myproject\CI\ComicInspect\NN\NN\obj\Debug\NN.csprojResolveAssemblyReference.cache
+D:\bklim_crosscert\myproject\CI\ComicInspect\NN\NN\obj\Debug\NN.Form1.resources
+D:\bklim_crosscert\myproject\CI\ComicInspect\NN\NN\obj\Debug\NN.Properties.Resources.resources
+D:\bklim_crosscert\myproject\CI\ComicInspect\NN\NN\obj\Debug\NN.csproj.GenerateResource.Cache
+D:\bklim_crosscert\myproject\CI\ComicInspect\NN\NN\obj\Debug\NN.exe
+D:\bklim_crosscert\myproject\CI\ComicInspect\NN\NN\obj\Debug\NN.pdb
