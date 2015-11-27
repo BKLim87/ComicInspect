@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MatrixLibrary;
 
 namespace NN
 {
@@ -26,9 +27,9 @@ namespace NN
             label1.Text = tt;
         }
         public void setNN() {
-            NN aNN = new NN(new int[] { 3, 3, 1 });
+            NN aNN = new NN(new int[] { 1, 1, 1 });
 
-            Matrix input = new Matrix(new double[,] { { 0,0,0 } });
+            Matrix input = new Matrix(new double[,] { { 0 } });
             String result = aNN.calculate(input).toString();
             
             setText(result);

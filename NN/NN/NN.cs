@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MatrixLibrary;
+
+
 
 namespace NN
 {
@@ -23,7 +26,6 @@ namespace NN
         {
             List<int> ll = new List<int>();
             for (int i = 0; i < l.Length; i++) ll.Add(l[i]);
-
             Random r = new Random();
 
             layer = ll;

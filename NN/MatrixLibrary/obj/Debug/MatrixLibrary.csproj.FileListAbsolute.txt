@@ -1,0 +1,5 @@
+D:\bklim_crosscert\myproject\CI\ComicInspect\NN\MatrixLibrary\bin\Debug\MatrixLibrary.dll
+D:\bklim_crosscert\myproject\CI\ComicInspect\NN\MatrixLibrary\bin\Debug\MatrixLibrary.pdb
+D:\bklim_crosscert\myproject\CI\ComicInspect\NN\MatrixLibrary\obj\Debug\MatrixLibrary.dll
+D:\bklim_crosscert\myproject\CI\ComicInspect\NN\MatrixLibrary\obj\Debug\MatrixLibrary.pdb
+D:\bklim_crosscert\myproject\CI\ComicInspect\NN\MatrixLibrary\obj\Debug\MatrixLibrary.csprojResolveAssemblyReference.cache
