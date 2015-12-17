@@ -240,6 +240,25 @@ namespace MatrixLibrary
         {
             return new int[2] { body.GetLength(0), body.GetLength(1) };
         }
+        public void toProbabilty()
+        {
+            double sum = 0;
+            for (int i = 0; i < body.GetLength(0); i++)
+            {
+                for (int j = 0; j < body.GetLength(1); j++)
+                {
+                    sum += body[i, j];
+                }
+            }
+
+            for (int i = 0; i < body.GetLength(0); i++)
+            {
+                for (int j = 0; j < body.GetLength(1); j++)
+                {
+                    body[i, j] = body[i,j]/sum;
+                }
+            }
+        }
         public void toSigmoid()
         {
             for (int i = 0; i < body.GetLength(0); i++)

@@ -104,5 +104,9 @@ namespace NN
             }
             return LayerValue;
         }
+        public void train(List<Matrix> inputs, int Times)
+        {
+            
+        }
     }
 }
