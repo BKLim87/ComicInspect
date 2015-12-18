@@ -192,6 +192,23 @@ namespace MatrixLibrary
 
             return text;
         }
+        public String toStringSimply()
+        {
+            String text = "[";
+            for (int i = 0; i < body.GetLength(0); i++)
+            {
+                text = text + "[";
+                for (int j = 0; j < body.GetLength(1); j++)
+                {
+                    text = text + Math.Round(body[i, j],4) + " ";
+                }
+                text = text + "]";
+            }
+            text = text + "]";
+
+            return text;
+        }
+
         public Matrix resize(int mplus, int nplus, double num)
         {
             Matrix newMat = new Matrix(body.GetLength(0) + mplus, body.GetLength(1) + nplus);
