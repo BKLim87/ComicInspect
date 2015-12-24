@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MatrixLibrary;
+using RandomLibrary;
+
 
 namespace SamplingExample
 {
@@ -15,11 +17,12 @@ namespace SamplingExample
             Matrix Realdist = new Matrix(RealMass.body);
             Realdist.toProbabilty();
 
-            int samplingtime = 50000;
+            int samplingtime = 500000;
 
             Matrix RSdist = RejectionSampling(Realdist, samplingtime);
             Matrix IPdist = ImportanceSampling(Realdist, samplingtime);
             Matrix MCdist = MCMCSampling(Realdist, samplingtime);
+            Matrix GBdist = GibbsSampling(Realdist, samplingtime);
 
             Console.WriteLine(Realdist.toStringSimply());
             Console.WriteLine("Sampling Distribution by Rejection Sampling");
@@ -31,12 +34,22 @@ namespace SamplingExample
             Console.WriteLine(MCdist.toStringSimply());
             Console.WriteLine("distance between Real and MCMC Sampling");
             Console.WriteLine((Realdist - MCdist).toStringSimply());
-         
-            Console.WriteLine("Sampling Distribution by Rejection Sampling");
-            Console.WriteLine(IPdist.toStringSimply());
+
+            Console.WriteLine("Sampling Distribution by Gibbs Sampling");
+            Console.WriteLine(GBdist.toStringSimply());
             Console.WriteLine("distance between Real and Rejection Sampling");
+            Console.WriteLine((Realdist - GBdist).toStringSimply());
+         
+            Console.WriteLine("Sampling Distribution by Importants Sampling");
+            Console.WriteLine(IPdist.toStringSimply());
+            Console.WriteLine("distance between Real and Importants Sampling");
             Console.WriteLine((Realdist - IPdist).toStringSimply());
 
+            Console.WriteLine("Results of Rejection, MCMC, Gibbs, Importants");
+            Console.Write((1000*(Realdist - RSdist) * (1000*(Realdist - RSdist)).trans()).toStringSimply()+",");
+            Console.Write((1000 * (Realdist - MCdist) * (1000 * (Realdist - MCdist)).trans()).toStringSimply() + ",");
+            Console.Write((1000 * (Realdist - GBdist) * (1000 * (Realdist - GBdist)).trans()).toStringSimply() + ",");
+            Console.Write((1000 * (Realdist - IPdist) * (1000 * (Realdist - IPdist)).trans()).toStringSimply() + ",");
         }
         public static Matrix RejectionSampling(Matrix GoalFunc, int tryn)
         {
@@ -110,6 +123,60 @@ namespace SamplingExample
 
             return getdist;
         }
+        public static Matrix GibbsSampling(Matrix GoalFunc, int tryn)
+        {
+            Random r = new Random();
+
+            int[] sample = new int[tryn];
+            int point = r.Next(0, 19);
+            int newpoint;
+
+            for (int i = 0; i < tryn; i++)
+            {
+                sample[i] = point;
+                newpoint = JumpPointGibbs(point, r, GoalFunc);
+                double ttt = GoalFunc.get(0, newpoint) / (GoalFunc.get(0, newpoint) + GoalFunc.get(0, point));
+                point = newpoint;
+            }
+            double[,] sumnum = new double[1, 20];
+            for (int i = 0; i < 20; i++)
+            {
+                sumnum[0, i] = 0;
+            }
+
+            for (int i = 0; i < tryn; i++)
+            {
+                if (sample[i] == -1)
+                {
+
+                }
+                else
+                {
+                    sumnum[0, sample[i]]++;
+                }
+            }
+
+            Matrix getdist = new Matrix(sumnum);
+            getdist.toProbabilty();
+
+            return getdist;
+
+        }
+        public static int JumpPointGibbs(int point, Random r, Matrix GoalFunc)
+        {
+            RandomLi rl = new RandomLi(r);
+
+            int[] gfsize = GoalFunc.getSize();
+            double[] varprob = new double[gfsize[1]];
+
+            for (int i = 0; i < gfsize[1]; i++)
+            {
+                varprob[i] = GoalFunc.get(new int[] { 0, i });
+            }
+
+            return rl.NextfromProbMass(varprob);
+
+        }
         public static Matrix MCMCSampling(Matrix GoalFunc, int tryn)
         {
             Random r = new Random();
@@ -123,7 +190,8 @@ namespace SamplingExample
                 sample[i] = point;
                 newpoint = JumpPointMCMC(point, r);
                 double ttt = GoalFunc.get(0, newpoint) / (GoalFunc.get(0, newpoint) + GoalFunc.get(0, point));
-                if(r.NextDouble()<GoalFunc.get(0,newpoint)/(GoalFunc.get(0,newpoint)+GoalFunc.get(0,point))) {
+                if ((r.NextDouble() < GoalFunc.get(0, newpoint) / (GoalFunc.get(0, newpoint) + GoalFunc.get(0, point))))
+                {
                     point = newpoint;
                 }
             }

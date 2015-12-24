@@ -1,0 +1,5 @@
+D:\bklim_crosscert\myproject\CI\ComicInspect\NN\RandomLibrary\bin\Debug\RandomLibrary.dll
+D:\bklim_crosscert\myproject\CI\ComicInspect\NN\RandomLibrary\bin\Debug\RandomLibrary.pdb
+D:\bklim_crosscert\myproject\CI\ComicInspect\NN\RandomLibrary\obj\Debug\RandomLibrary.csprojResolveAssemblyReference.cache
+D:\bklim_crosscert\myproject\CI\ComicInspect\NN\RandomLibrary\obj\Debug\RandomLibrary.dll
+D:\bklim_crosscert\myproject\CI\ComicInspect\NN\RandomLibrary\obj\Debug\RandomLibrary.pdb

@@ -20,12 +20,12 @@ namespace MatrixLibrary
         }
         public Matrix(int m, int n)
         {
-            body = new double[m,n];
+            body = new double[m, n];
             for (int i = 0; i < m; i++)
-            {   
+            {
                 for (int j = 0; j < n; j++)
                 {
-                    body[i,j] = 1;
+                    body[i, j] = 1;
                 }
             }
         }
@@ -36,7 +36,7 @@ namespace MatrixLibrary
             {
                 for (int j = 0; j < mn[1]; j++)
                 {
-                    body[i,j] = 1;
+                    body[i, j] = 1;
                 }
             }
         }
@@ -47,7 +47,7 @@ namespace MatrixLibrary
             {
                 for (int j = 0; j < body.GetLength(1); j++)
                 {
-                    body[i,j] = r.NextDouble();
+                    body[i, j] = r.NextDouble();
                 }
             }
         }
@@ -58,7 +58,7 @@ namespace MatrixLibrary
             {
                 for (int j = 0; j < body.GetLength(1); j++)
                 {
-                    body[i,j] = min + (max-min)*r.NextDouble();
+                    body[i, j] = min + (max - min) * r.NextDouble();
                 }
             }
         }
@@ -68,7 +68,7 @@ namespace MatrixLibrary
             {
                 for (int j = 0; j < body.GetLength(1); j++)
                 {
-                    body[i,j] = 0;
+                    body[i, j] = 0;
                 }
             }
         }
@@ -79,8 +79,8 @@ namespace MatrixLibrary
             {
                 for (int j = 0; j < body.GetLength(1); j++)
                 {
-                    if (i == j) body[i,j] = 1;
-                    else body[i,j] = 0;
+                    if (i == j) body[i, j] = 1;
+                    else body[i, j] = 0;
                 }
             }
         }
@@ -89,7 +89,7 @@ namespace MatrixLibrary
         {
             Matrix tran = new Matrix(body.GetLength(1), body.GetLength(0));
 
-            for(int i=0; i<body.GetLength(0); i++)
+            for (int i = 0; i < body.GetLength(0); i++)
             {
                 for (int j = 0; j < body.GetLength(1); j++)
                 {
@@ -101,23 +101,24 @@ namespace MatrixLibrary
 
         public double get(int i, int j)
         {
-            return body[i,j];
+            return body[i, j];
         }
         public double get(int[] ij)
         {
-            return body[ij[0],ij[1]];
+            return body[ij[0], ij[1]];
         }
-        public static Matrix operator +(Matrix m1, Matrix m2) {
+        public static Matrix operator +(Matrix m1, Matrix m2)
+        {
             int n = m1.body.GetLength(0);
             int m = m1.body.GetLength(1);
 
-            double[,] re = new double[n,m];
+            double[,] re = new double[n, m];
 
             for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j < m; j++)
                 {
-                    re[i,j] = m1.body[i,j] + m2.body[i,j];
+                    re[i, j] = m1.body[i, j] + m2.body[i, j];
                 }
             }
             return new Matrix(re);
@@ -149,7 +150,7 @@ namespace MatrixLibrary
             {
                 for (int j = 0; j < m; j++)
                 {
-                    re[i,j] = d*m1.body[i,j];
+                    re[i, j] = d * m1.body[i, j];
                 }
             }
             return new Matrix(re);
@@ -161,16 +162,16 @@ namespace MatrixLibrary
             int n2 = mat2.body.GetLength(0);
             int m2 = mat2.body.GetLength(1);
 
-            double[,] re = new double[n1,m2];
+            double[,] re = new double[n1, m2];
 
             for (int i = 0; i < n1; i++)
             {
                 for (int k = 0; k < m2; k++)
                 {
-                    re[i,k] = 0;
+                    re[i, k] = 0;
                     for (int j = 0; j < m1; j++)
                     {
-                        re[i,k] += mat1.body[i,j] * mat2.body[j,k];
+                        re[i, k] += mat1.body[i, j] * mat2.body[j, k];
                     }
                 }
             }
@@ -184,8 +185,8 @@ namespace MatrixLibrary
                 text = text + "[";
                 for (int j = 0; j < body.GetLength(1); j++)
                 {
-                    text = text + body[i,j] + " ";
-                } 
+                    text = text + body[i, j] + " ";
+                }
                 text = text + "]";
             }
             text = text + "]";
@@ -200,7 +201,7 @@ namespace MatrixLibrary
                 text = text + "[";
                 for (int j = 0; j < body.GetLength(1); j++)
                 {
-                    text = text + Math.Round(body[i, j],4) + " ";
+                    text = text + Math.Round(body[i, j], 4) + " ";
                 }
                 text = text + "]";
             }
@@ -212,13 +213,13 @@ namespace MatrixLibrary
         public Matrix resize(int mplus, int nplus, double num)
         {
             Matrix newMat = new Matrix(body.GetLength(0) + mplus, body.GetLength(1) + nplus);
-            if(mplus >= 0 && nplus >=0)
+            if (mplus >= 0 && nplus >= 0)
             {
-                for(int i=0; i<newMat.body.GetLength(0); i++)
+                for (int i = 0; i < newMat.body.GetLength(0); i++)
                 {
-                    for(int j=0; j<newMat.body.GetLength(1); j++)
+                    for (int j = 0; j < newMat.body.GetLength(1); j++)
                     {
-                        if(i<body.GetLength(0) && j<body.GetLength(1))
+                        if (i < body.GetLength(0) && j < body.GetLength(1))
                         {
                             newMat.body[i, j] = body[i, j];
                         }
@@ -237,7 +238,7 @@ namespace MatrixLibrary
         }
         public Boolean equals(Matrix m2)
         {
-            if(body.GetLength(0) == m2.body.GetLength(0))
+            if (body.GetLength(0) == m2.body.GetLength(0))
             {
                 if (body.GetLength(1) == m2.body.GetLength(1))
                 {
@@ -272,7 +273,7 @@ namespace MatrixLibrary
             {
                 for (int j = 0; j < body.GetLength(1); j++)
                 {
-                    body[i, j] = body[i,j]/sum;
+                    body[i, j] = body[i, j] / sum;
                 }
             }
         }

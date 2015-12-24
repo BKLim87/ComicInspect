@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatrixLibrary", "MatrixLibr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SamplingExample", "SamplingExample\SamplingExample.csproj", "{2EB8E306-2C37-4EA6-8CC9-D1D0D8C1514F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomLibrary", "RandomLibrary\RandomLibrary.csproj", "{F9C7DCD0-228D-4EDF-933F-ACA6295026C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{2EB8E306-2C37-4EA6-8CC9-D1D0D8C1514F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2EB8E306-2C37-4EA6-8CC9-D1D0D8C1514F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2EB8E306-2C37-4EA6-8CC9-D1D0D8C1514F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9C7DCD0-228D-4EDF-933F-ACA6295026C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9C7DCD0-228D-4EDF-933F-ACA6295026C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9C7DCD0-228D-4EDF-933F-ACA6295026C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9C7DCD0-228D-4EDF-933F-ACA6295026C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
